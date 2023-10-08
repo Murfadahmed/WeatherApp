@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>weather UI</title>
+</head>
+
+<body>
+
+    <div class="weather_app">
+        <div class="container">
+            <h3 class="brand">The weather</h3>
+            <div class="empty">
+                <h1 class="temp">16&#176;</h1>
+                <div class="city_time">
+                    <h1 class="name">karachi</h1>
+                    <small class="timeSpan">
+                        <span class="time">06:09</span>
+                        <span class="date">
+                            Mon sep 19
+                        </span>
+                    </small>
+                </div>
+                <div class="weather">
+                    <img src="./64x64/day/113.png" alt="icon" width="50" height="50" class="icon ">
+                    <span class="condition">cloudy</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="pannel">
+            <form id="locationInput">
+                <input type="text" class="search" placeholder="search Location...">
+                <button type="submit" class="submit">
+                    <i>submit </i>
+                </button>
+            </form>
+            <ul class="cities">
+                <li class="city">karachi</li>
+                <li class="city">lahore</li>
+                <li class="city">Hyderabad</li>
+                <li class="city">Islamabad</li>
+                <li class="city">Mari</li>
+            </ul>
+            <ul class="details">
+                <h4>weather details</h4>
+                <li>
+                    <span>Cloudy</span>
+                    <span class="cloud">66%</span>
+                </li>
+                <li>
+                    <span>Humidity</span>
+                    <span class="humidity">66%</span>
+                </li>
+                <li>
+                    <span>Wind</span>
+                    <span class="wind">66%</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
