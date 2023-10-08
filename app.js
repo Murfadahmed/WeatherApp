@@ -34,6 +34,8 @@ let cities = document.querySelectorAll('.city')
 
 // get location
 
+
+
 let cityInput = "karachi";
 
 
@@ -53,9 +55,9 @@ cities.forEach((city) => {
 
 form.addEventListener('submit', (e) => {
     // if input is empty
-    if (search.value) {
+    if (!search.value) {
         alert("pleas type the city name---")
-        app.style.opacity = 0;
+        app.style.opacity = 0.2;
     }
     else {
 
@@ -85,38 +87,44 @@ function dayOfWeek(day, month, year) {
 
 function fetchWeatherData(e) {
     // fetch the data with  api and dinamically add city
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${API}`)
-        // take the data and  into jason and convert it into JsObject
-        .then(response => response.json())
-        .then(data => {
-            // console.log(data);
-                if(search.value.lenght !== 0){
+    try {
 
-                    temp.innerHTML = data.main.temp + '&#176'
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=49cc8c821cd2aff9af04c9f98c36eb74&units=metric`)
+            // take the data and  into jason and convert it into JsObject
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (search.value.lenght !== 3) {
+                    // console.log(data);
+                    temp.innerHTML = Math.round(data.main.temp) + '&#176'
                     conditionOutput.innerHTML = data.weather[0].description
                     cloudOutput.innerHTML = data.clouds.all + "%";
                     humidityOutput.innerHTML = data.main.humidity + "%";
                     windOutput.innerHTML = data.wind.speed + "km/h";
-                    
-                    let date = data.timezone
-                    
                     nameOutput.innerHTML = data.name
-                    
+
+                    // let date = data.timezone
+
+
                 }
-                else{
+                else {
                     alert("an input is empty")
                 }
-            // here we set time from setTimeFun 
-            // const iconId = data.weather[0].icon.substr(
-            //     '//cdn.weatherapi.com/weather/64x64/'.length
-            // );
-            // console.log(iconId);
-            // console.log(data.clouds.all);
+                // here we set time from setTimeFun 
+                // const iconId = data.weather[0].icon.substr(
+                //     '//cdn.weatherapi.com/weather/64x64/'.length
+                // );
+                // console.log(iconId);
+                // console.log(data.clouds.all);
 
 
-        })
-        .catch((err)=>{
-            alert("an error occur",err)
-            throw new Error('there is a problem') 
-        })
+            })
+    }
+    catch {
+        (err) => {
+            alert("may be city name is wrong", err)
+
+        }
+    }
 }
