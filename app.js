@@ -94,7 +94,7 @@ function fetchWeatherData(e) {
             // take the data and  into jason and convert it into JsObject
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                console.log(data.weather[0].icon);
                 if (search.value.lenght !== 3) {
                     // console.log(data);
                     temp.innerHTML = Math.round(data.main.temp) + '&#176'
@@ -103,6 +103,7 @@ function fetchWeatherData(e) {
                     humidityOutput.innerHTML = data.main.humidity + "%";
                     windOutput.innerHTML = data.wind.speed + "km/h";
                     nameOutput.innerHTML = data.name
+                    icon.src = `./icons/${data.weather[0].icon}.svg`
 
                     // let date = data.timezone
 
